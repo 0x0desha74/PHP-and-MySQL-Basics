@@ -1,0 +1,462 @@
+بسم الله الرحمن الرحيم
+===================
+- PHP => HyperText PreProcessor
+# Echo and Comments
+=-=-=-=-=-=-=-=-=-=
+- Every lines should end with ;
+- echo => print anything in the web page
+- echo '<br>'; =>  New line
+- You can make new line by adding <br/> in side the string 
+    echo "Hello world<br/>";
+-  We can use HTMl tags in PHP code.
+- Single line comment //This is a single line comment
+- Multi line comments 
+/*This 
+is 
+a
+comment
+*/
+
+# Variables
+=-=-=-=-=-=-
+- Declearing a variabl using $var or $_var
+- concatenation using .
+  <?PHP
+  $name = 'Mustafa';
+  echo 'Hey This Is '.$name
+- canstants like pi => define(pi, 3.14, true);
+- true referse to it can be pi or PI.
+- when calling the constants we don't use $
+
+# Data Types
+=-=-=-=-=-=-
+- string
+- integer
+- float
+- boolean
+-- echo var_dump($var) => variable Date type
+
+# Variable Variables
+=-=-=-=-=-=-=-=-=-=-
+    <?php
+    $x = 'hello';
+    $hello = 'mustafa';
+    echo $$x
+    // $$x > $hello > mustafa
+    ?>
+# String Manipulation
+=-=-=-=-=-=-=-=-=-=-=-
+   $var=  'Hello This is a test string! ';
+   substr($var, 0, 5);
+   strpos($var, ' '); => start searching from the index 0
+   strpos($var, 't', 15) => srart searching from the index 15
+   strlen($var); => string length
+   ucfirst($var); => Making the first letter uppercase
+   strtoupper($var); => convert the whole string to uppercase
+   strtolower($var); => convert the whole string to lowercase.
+   str_replace('Hello', 'Hi', $var); => replacing sub string with another one.
+   str_repeat($var, 5 ); => repeating the string 5 times.
+   str_word_count($var); => cuoting no. of the words in  the string.
+   strrev($var); => reversing the string
+   trim($var); => removing spaces before and after the string.
+   strip_tags($var); => removing HTMl tags from the string, previnting inserting HTMl tags.
+   htmlspecialchars() => Used to print the HTML tags without excuting it.
+
+#Mathimatical Operators
+=-=-=-=-=-=-=-=-=-=-=-=
+   + - / % **
+- Assignment Operators
+     =
+       $x=$y
+     -=
+      $x-=4 => $x=$x-4
+     +=
+       $x+=4 => $x=$x+4
+     %=
+       $x%=4 => $x=$x%4
+     /=
+       $x/=4 => $x=$x/4
+     *=
+      $x*=4 => $x=$x*4
+- Increment & Decrement
+$x-- => sutract one from the integer
+$x++ => add one to the integer
+  $x= 5
+- ++$x => 1+$x => echo 6 //Without updating the value of the variable
+- $x++ => $x=$x+1 => echo 6 // and updating the value of the variable
+
+# Compasion Operators
+=-=-=-=-=-=-=-=-=-=-=-
+== Is Eqaul the value
+=== Haveing the same value and the same Data Type
+>
+<
+>=
+<=
+!== => Not Equal
+<> => Not Equal
+!> Not Greater than
+!< NOt Less than
+!
+
+- Logical Operators
+  && 
+  ||
+  Not
+  xor => one is true
+# If Statemant
+=-=-=-=-=-=-=-
+- $grade = 90;
+if($grade>=90) echo "A";
+else if ($grade>=80) echo "B";
+else if ($grade>=70) echo "C";
+else if ($grade<60) echo "D";
+else echo "F";
+
+#Switch Case
+=-=-=-=-=-=-
+- Used for only comparison by equality
+- $mon=5;
+switch($mon){
+  case 1: echo "jan";
+  break;
+  case 2: echo "feb";
+  break;
+  case 3: echo "mar";
+  break;
+  case 4: echo "apr";
+  break;
+  case 5: echo "may";
+  break;
+  case 6: echo "jun";
+  break;
+  case 7: echo "jul";
+  break;
+  case 8: echo "aug";
+  break;
+  case 9: echo "seb";
+  break;
+  case 10: echo "oct";
+  break;
+  case 11: echo "nov";
+  break;
+  case 12: echo "dec";
+  break;
+  default : echo "Check Your Input!";
+}
+
+# Loops => While
+=-=-=-=-=-=-=-=-=
+  $counter = 0;
+while($counter <= 10){
+  echo $counter.'<br>';
+  $counter++;
+}
+echo "Loop Finshed!"
+
+# Loops => do  while 
+=-=-=-=-=-=-=-=-=-=-
+- do loop excutes one time when the condition is not came true.
+ 
+    $i = 1;
+    do{
+      echo $i;
+      $i++;
+    }while($i>=10);
+    Output => 1
+
+# Loops => for
+=-=-=-=-=-=-=-
+- <?php
+for($i=0;$i<=30;$i++){
+  echo $i.'<br>';
+}
+?>
+
+# User Defined Function
+=-=-=-=-=-=-=-=-=-=-=-=-
+-  How to create a funcction?
+- Remember that the function has its own scope of variables
+- use a parameter
+
+# Variable scope
+=-=-=-=-=-=-=-=-
+- global scope => can be called everywhere in the script
+- To call global variable inside a function use $GLOBALS['Var_name']
+
+    <?php
+ $x=4;
+function test(){
+  $x=9;
+  echo "Local Scope x = ".$x.'<br>';
+  echo "Global Scope x = ".$GLOBALS['x'];
+};
+test();
+?>
+
+# Static variables
+=-=-=-=-=-=-=-=-=-
+- static $var => will be static in the memory
+- <?php
+function show_name($name){
+  static $id = 1;
+  echo "Your Are ".$name." And Your Id = ".$id.'<br>';
+  $id++;
+}
+show_name('Mustafa');
+show_name('Elsayed');
+show_name('Ahmed');
+?>
+//Output => 
+    Your Are Mustafa And Your Id = 1
+    Your Are Elsayed And Your Id = 1
+    Your Are Ahmed And Your Id = 1
+
+# Arrays
+=-=-=-=-
+  1. Indexed Arrays
+
+    - $names = array('Mustafa', 'Elsayed', 'Mustafa');
+    - to print the whole array => print_r($names);
+    - to print a spesific item => $names[index]
+    - to edit some item => $names[1] = 'some value';
+    - to append the array after the last index => $names[]='some value';
+
+  2. Associative Arrays
+
+    - indexed and NOT indexed => 'key' => value.
+    - You can print the whole array used => print_r(array_name);
+
+  3.Two-Dimensional Arrays
+   * Indexed 2-dim array:'Matrix'
+    $grades = array(
+  array(1, 2, 3),
+  array(4, 5, 6),
+  array(7, 8, 9),
+
+  );
+  echo $grades[0][0] => //$grades[row][coulmn]
+  * NOT indexed
+      $grades=array(
+    'Mustafa' => array('Math'=>50, 'Circuits'=>50),
+    'Ahmed' => array('Math'=>40, 'Curcits'=>20)
+  );
+    echo $grades['Mustafa']['Math'];
+
+# Looping through array items
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+- using for
+      $months =array('jan', 'feb','mar' ,'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec');
+  for($i=0;$i<11;$i++){
+    echo $months[$i].'<br>';
+  
+  }
+- using foreach
+      $months =array('jan', 'feb','mar' ,'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec');
+  foreach($months as month) echo $month;
+
+$grades = array('Math'=>25, 'Eng'=>30, 'Arabic'=>87);
+foreach($grades as $key=>$grade) echo $key.' = '.$grade."<br>"; 
+
+  * 2-Dim Array
+
+# Super GLOBALS
+=-=-=-=-=-=-=-=-
+- $GLOBALS
+- $_SERVER => is an array we can print it using => print_r($_SERVER)
+- $_SERVER['PHP_SELF] => path of the script
+- $_SERVER['SERVER_NAME] => server name
+- $_SERVER['HTTP_HOST']
+- $_SERVER['HTTP_USER_AGENT'] => INFO ABOUT THE USER AGENT (THE BROWSER)
+- $_SERVER['SCRIPT_NAME'] => path of the script.
+- $_SERVER['REMOTE_ADDR']=> IP Address.
+
+- $_SERVER['REQUEST_METHOD];
+- $_REQUEST['input_name'];
+- Method changes only when we submit the form
+
+# POST and GET
+=-=-=-=-=-=-=-
+- POSt => No data appeared in the url, more safe.
+- GET => Data appears in the url .
+- action  attribute => used to redirect you to another page => action='x.php?g=hello'
+- Note => This is a good point in understanding XSS
+
+# Include and require
+=-=-=-=-=-=-=-=-=-=-=-
+- This a good point to understand local file inclusion (LFI).
+- include => to include a php file into anthor one
+- require => to include a php file into anthor one, all the following script rely on the require, 
+  if there is an error in the requireing operation, all the following script will not work.
+  
+# Form Handling
+=-=-=-=-=-=-=-=
+- vid 1 => we made an HTMl form
+- vid 2 => how to collect data from the form using PHP
+- Variable validation => 
+            1. Removing unwanted spaces using trim
+            2. Removing HTML tags using strip_tags
+            3. Removing Slaches using stripslashes
+            4. Deavtivating HTML specail cahracters using htmlspecialchars
+- isset() => if the button is clicked
+- making an external file to store the checking functions.
+- we should validate all the data from all variables.
+
+# Form Handling => ctype function
+=-=-=-=-=-=-=-=
+- check the data type of each input
+    ex. phone number must return only numbers and so on
+- ctype_alpha() => ckecks for alphabtic only
+- ctype_digit() => only numbers
+- ctype_alnum() => alpha numbers, used mostly in username
+- ctype_lower() => lowercase letters, and only alpha without spaces,...,etc
+- ctype_upper() => uppercase letters, and only alpha without spaces,...,etc
+- ctype_graph() => have no spaces
+
+# Form Handling => Filters
+=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+  1. Filter validate => prevent unwanted value, output is true or false
+    - filter_var($var, FILTER_VALIDATE_BOOLEAN) => checks if the input is value boolean
+    - filter_var($var, FILTER_VALIDATE_INT) => checks if the input value is integer
+    - filter_var($var, FILTER_VALIDATE_FLOAT) =>checks if the input value is float
+    - filter_var($var, FILTER_VALIDATE_URL) => checks if the input value is url
+    - filter_var($var, FILTER_VALIDATE_EMAIL) => checks id the input value is email
+
+  2. Filter Sanitize => sanitizing the value to return only the wanted value, and removing all the unwanted characters
+    - The output is a sanitized value
+    - filter_var($var, FILTER_SANITIZE_EMAIL) => sanitize the email input value
+    - filter_var($var, FILTER_SANITIZE_NUMBER_FLOAT) => sanitize anything except numbers, output => numbers
+    - filte_var($var, FILTER_SANITIZE_NUMBER_INT) => like the above but integer.
+
+# File Upload
+=-=-=-=-=-=-=
+- to upload a file you must set enctype="multitype/form-data"
+- $_FILES['input_name'] => is an array has the metadata of the file 
+    1.name 2.type 3.tmp_name 4.size
+-end(explode('.', $var)) => to have the value after the '.'
+- in_array($var, $array) => search for some value into an array.
+
+#calling headers
+=-=-=-=-=-=-=-=-
+- header('location:page.php') => redirearing to page.php
+
+# Session
+=-=-=-=-=-
+- session_start();
+- $_SESSION['user']=$user
+
+
+=-=-=-=-=-
+# MySQL
+=-=-=-=-=-
+- What is database?
+    - Database is a separate application that stores a collection of data.
+      each database has one or more APIs for creating, accessing, managing, searching and replacing data the data it holds.
+    - Database is simply a collection of data. In relational database, data is organized into tables.
+- Every row is called Record => Data related to something and related to each other.
+- Primary Key => is a column identify each row , like the footprint or Id.
+- VARCHAR => alphabets and numbers
+- AUTO_INCREMENT => +1 to every userId sign up into the site.
+
+# MySQL and PHP Connection
+=-=-=-=-=-=-=-=-=-=-=-=-=-
+- mysqli_connect() => used to connect PHP with database and has.
+                   => it takes 4 parameters ($host, $user_name, $password, $Db_name)
+                   => 1 return => Connection Status (true, false)
+- mysqli_connect_error() =>return the error name
+- die(mysqli_connect_error()) => disply the error name and stop the sctipt.
+<?php
+$host = 'localhost';
+$user_name = '0x0desha74';
+$password = 'mudesha74';
+$DB_name = 'users';
+$connection = mysqli_connect($host, $user_name,$password, $DB_name);
+if($connection) echo "Connected Successfully";
+else echo "Failed To Connect"
+?>
+
+# Inserting Data Into Database
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+- INSERT =>  to add to the database
+- mysqli_query($connection_name, $query_name) => to add a query to the database, return(true, false)
+- code =>
+`````<?php
+require('db_functions.php');
+if($_SERVER['REQUEST_METHOD']=='POST'){
+$name = $_POST['name'];
+$pass = md5($_POST['pass']);
+$query= "INSERT INTO `accounts` (`id`, `name`, `password`) VALUES (NULL, '$name', '$pass')";
+if(mysqli_query($connection, $query)) echo "Registered Successfully";
+else echo "Error";
+};
+?>
+
+
+<html>
+  <body>
+    <form method='post'>
+      <label>Username</label>
+      <input type='text' name='name'>
+      <label>Password</label>
+      <input type='password' name='pass'>
+      <button>Sign Up</button>
+    </form> 
+  </body>
+
+
+</html>
+
+# Get Last Insrted Id
+=-=-=-=-=-=-=-=-=-=-=-
+- mysqli_insert_id($connection_name) => return the last incremented Id
+- we can control the start of the auto increment value using Operation option in phpmyadmin
+
+# Retreiving Data From database
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+- SELECT => to get values from the database
+- mysqli_num_rows($database) => numbers of rowa
+- mysqli_fetch_array($resutl) => to make the data as an array to be able to be displyed
+    $result = mysqli_query($connection, $query)
+    while($rows=mysqli_fetch_array($result))   // $rows is the array carring the data
+    echo $rows['column_name'].
+-mysqli_close($connection) => close the connection between the php and the database
+
+
+# Where Clause
+=-=-=-=-=-=-=-
+- To extract certain data from the database
+- query = "SELECT * FROM `accounts` WHERE `name`=`mustafa` AND `id`=1" =>will only return the column tahn has the value of mustafa and its id =1 
+
+# Some Clauses
+=-=-=-=-=-=-=-
+- BETWEEN => SELECT * FROM `accounts` WHERE `id` BETWEEN 1 AND 4
+- NOT BETWEEN 
+- IN () => SELECT * FROM `accounts` WHERE `name` IN (mustafa, desha, anone) => whill return only the names between the bracets
+- NOT IN
+- LIKE => SELECT * FROM `accounts` WHERE `name` LIKE 'm%' => Will return all names starts with letter 'm'
+- '%m%' => return names has letter 'm' in general 
+ - %m => unknown number of characters brfore the 'm'
+ - _m => single unknown character before the 'm', _ means one character
+ - 'm%d' => starts with m and ends with d ex=> mohamed, mahmoud
+ - ORDER BY => SELECT * FROM `accouonts` ORDER BY `name` ASC => low to high
+ - ORDER BY => SELECT * FROM `accouonts` ORDER BY `name` DESC => high to low
+
+ # MySQL buitl in functions
+ =-=-=-=-=-=-=-=-=-=-=-=-=-
+ - SELECT COUNT(`id`) AS 'c' FROM `accounts`;
+ - MAX(`id`) => MAX Id
+ - MIN(`id`) => MIN Id
+ - SUM(`id`) => sumition of the id values .
+ - AVG(`id) => Avrage value
+ - UCASE(`name`) => Return all names as Uppercase.
+ - LCASE(`name`) =>Return all names as lowercase
+ - MID(`name`,1,4) =>return from the first letter to the fourth letter in all names
+ 
+#Upadte Database Data
+=-=-=-=-=-=-=-=-=-=-=
+- $qyery = "UPDATE `accounts` SET `name`='newName' WHERE `name`='oldName'";
+
+# Delete Data From Database
+=-=-=-=-=-=-=-=-=-=-=-=-=-=
+- $query = "DELETE FROM `accounts` WHERE `name`='anyname'";
