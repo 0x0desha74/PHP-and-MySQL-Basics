@@ -1,0 +1,77 @@
+[] Linux Peivilege Escalation:
+ - privelege escalation => is the process fro going from lower permission account to a higher permission one
+
+ [] Enumeration:
+ 	- hostname => return the host name of the target machine, it could provide some information abouut the the target system's role like (SQL-PROD-01 for a production SQL server)
+
+ 	- uname -a => retuen information about the kernel which can be useful whe searhing for kernel vulns that could lead to priv escalation
+
+ 	- /proc/version => looking at /pr/version gives you info about kernel version and weather GCC compiler is installed
+
+ 	- /etc/iusse => may has info about the operation system, good to check .
+
+ 	- ps => processes running on that shell
+ 	- ps -A => all running processes
+ 	- ps axjf => processes tree
+ 	- ps aux => view processes of all users(a),display the user that launched the processes(u), show proceess run in the other terminals
+
+ 	- env command => environmental variables
+ 		The PATH variable may have a compiler or a scripting language (e.g. Python) that could be used to run code on the target system or leveraged for privilege escalation. 
+
+ 	- sudo -l => show commands your usuer can ru as root
+ 		if you found any check `fobins.github.io/` to have root priv
+
+ 	- ls -al => list files & dirs including the hidden ones
+ 	- id general overview abouut the user privelege level
+ 	- /etc/passwd file => users => cat /etc/passwd | cut -d ":" -f 1 => to have a simple list for the system users
+ 	- cat /etc/passwd | grep home => to grep system : home users
+ 	- history
+ 	- ifconfig => check network interfaces 
+ 	- ip route => which network route exsist
+ 	- netstat -a => al internet connections
+ 	- netstat -au, -at => TCP, UDP connections
+ 	- nstatat -l => port in lestining mode
+ 	- netstat -s => network usage statistics
+ 	- netstat -tp: list connections with the service name and PID information.
+ 	- netstat -i => network interface statistics
+ 	- netstat -an0
+ 		-a => all sockets
+ 		-n => don't resolve names
+ 		-o => timers
+
+ 	{important} find command:
+ 	- fint /home -type f -name flag.txt -user frank -perm 0777 -atime 10 -size 50M
+ 		we can broke down this find command
+ 		/home => in the home dir
+ 		-type f => file
+ 		-type d => dir
+ 		-name <file||dir_name>
+ 		-user <username>
+ 		-perm 0777 => files or dirs with permission 777
+ 		-perm a=x => executable files
+ 		-mtime 10 => modified in the last 10 days
+ 		-atime 10 => accessed in the last 10 days
+ 		-cmin 60 => changed in the last 60min=an hour
+ 		-size 50m=> files with 50 MB size 
+ 		-size +50m=> files larger than 50 MB 
+ 		-size -50m=> files smaller than 50 MB
+ 		2>/dev/null => redirect errors to /dev/null to have a cleaner output.
+ 		- writale folders => -writable || -222 || -o w
+ 		ex)> `find -perm -o w -type d 2>/dev/null`
+ 		- executable folders => `find / -perm -o x -type d 2>/dev/null`
+ 		- Find development tools and supported languages:
+
+    			find / -name perl*
+    			find / -name python*
+    			find / -name gcc* 
+    	- `find / -perm -u=s type f 2>/dev/null` => find files with the SUID bit which allows us to run file with higher privelege level than the current user
+
+
+    	- cat /etc/release => the linux distro details
+
+ [] Automated Tools:
+ 	- LinPeas => `https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS`
+ 	- LinEnum => `https://github.com/rebootuser/LinEnum`
+ 	- LES(Linux Exploit Suuggester) => https://github.com/mzet-/linux-exploit-suggester
+ 	- Linux Smart Enumeration => `https://github.com/diego-treitos/linux-smart-enumeration`
+ 	- Linux Priv Checker => `https://github.com/linted/linuxprivchecker`
